@@ -55,7 +55,7 @@ class UserRepositoryImpl : UserRepository {
     }
 
     override fun getUsersSortedByName(): List<User> = synchronized(this) {
-        users.values.sortedBy { it.name }
+        users.values.sortedBy { it.name.lowercase() }
     }
 
     override fun getUsersByEmailDomain(domain: String): List<User> = synchronized(this) {

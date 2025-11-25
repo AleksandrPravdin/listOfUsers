@@ -93,8 +93,21 @@ class UserManager(private val userRepository: UserRepository) {
     }
 
     private fun isValidEmail(email: String): Boolean {
-        return email.contains('@') && email.split('@').let { parts ->
-            parts.size == 2 && parts[1].isNotBlank() && parts[1].contains('.')
-        }
+        if (!email.contains('@')) return false
+
+        val parts = email.split('@')
+        if (parts.size != 2) return false
+
+        val localPart = parts[0]
+        val domainPart = parts[1]
+
+        if (localPart.isBlank()) return false
+
+        if (domainPart.isBlank()) return false
+        if (!domainPart.contains('.')) return false
+        if (domainPart.indexOf('.') == 0) return false
+        if (domainPart.endsWith('.')) return false
+
+        return true
     }
 }
