@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.9.0"
     application
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "org.example"
@@ -11,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib"))
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -29,4 +31,10 @@ kotlin {
 
 application {
     mainClass.set("presentation.console.MainKt")
+}
+
+tasks.shadowJar {
+    archiveBaseName.set("listOfUsers")
+    archiveClassifier.set("")
+    archiveVersion.set("")
 }

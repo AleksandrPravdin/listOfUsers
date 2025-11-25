@@ -33,11 +33,11 @@ object StringsManager {
 
     fun getHelpText() = getString("help.text")
 
-    fun getUserEmoji() = "👤"
-    fun getSearchEmoji() = "🔍"
-    fun getStatsEmoji() = "📊"
-    fun getSuccessEmoji() = "✅"
-    fun getErrorEmoji() = "❌"
+    fun getUserEmoji() = getString("emoji.user")
+    fun getSearchEmoji() = getString("emoji.find")
+    fun getStatsEmoji() = getString("emoji.stats")
+    fun getSuccessEmoji() = getString("emoji.ok")
+    fun getErrorEmoji() = getString("emoji.error")
 
     private fun getString(key: String, vararg args: String): String {
         return try {
